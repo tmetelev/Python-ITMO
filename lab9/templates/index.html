@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Game list</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            font-family: Verdana;
+        }
+        .game-box {
+            background-color: aqua;
+            margin: 10px;
+            padding: 5px;
+        }
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: darkslategray;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список пройденых игр</h1>
+    {% for g in games %}
+        <div class="game-box">
+            <b>{{g.year}}</b>: {{g.game}}
+        </div>
+    {% endfor %}
+    <div class="bottom">
+        <form method="POST" action="{{ url_for('add_game') }}">
+            <label>Название: <input type="text" name="game" required></label>
+            <label>Год: <input type="number" name="year" required></label>
+            <button type="submit">Добавить</button>
+        </form>
+        <br>Метелев Тимофей [470151]
+    </div>
+</body>
+</html>
